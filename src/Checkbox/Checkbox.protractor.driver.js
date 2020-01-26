@@ -8,7 +8,7 @@ import * as DATA_ATTR from './DataAttr';
  * @return <T extends InternalFocusableDriver>
  */
 export const internalDriverFactory = element => {
-  const getBox = () => element.$(`[data-hook="${dataHooks.box}"]`);
+  const getBox = () => element.$(`[data-hook="${dataHooks.boxTooltip}"]`);
   const getTextChildren = () =>
     element.$(`[data-hook="${dataHooks.children}"]`);
 
@@ -20,7 +20,7 @@ export const internalDriverFactory = element => {
 };
 
 const checkboxDriverFactory = element => {
-  const checkboxElement = element.$(`[data-hook="${dataHooks.box}"]`);
+  const checkboxElement = element.$(`[data-hook="${dataHooks.boxTooltip}"]`);
   const childrenElement = element.$(`[data-hook="${dataHooks.children}"]`);
 
   const focusableDriver = focusableDriverFactory({

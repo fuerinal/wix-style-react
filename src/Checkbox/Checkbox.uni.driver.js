@@ -16,7 +16,7 @@ export const checkboxUniDriverFactory = (base, body) => {
   const getLabelDriver = async () =>
     labelUniDriverFactory(base.$(`[data-hook="${dataHooks.label}"]`));
   const getTooltipDriver = async () =>
-    tooltipDriverFactory(base.$(`[data-hook="${dataHooks.box}"]`), body);
+    tooltipDriverFactory(base.$(`[data-hook="${dataHooks.boxTooltip}"]`), body);
 
   return {
     ...baseUniDriverFactory(base),

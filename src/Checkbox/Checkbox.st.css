@@ -4,16 +4,15 @@
 }
 
 :import {
-  -st-from: "wix-ui-core/hocs.st.css";
+  -st-from: 'wix-ui-core/hocs.st.css';
   -st-named: Focusable;
 }
 
-.root{
+.root {
   -st-extends: Focusable;
   -st-states: valign(enum(center, top)),
     selectionarea(enum(none, always, hover)), disabled,
-    selection(enum(unchecked, checked, indeterminate)),
-    xhover, error;
+    selection(enum(unchecked, checked, indeterminate)), checkboxHover, error;
   display: inline-flex;
   outline: none;
 
@@ -103,10 +102,7 @@
   border-radius: 8px;
 }
 
-.root:selectionarea(always):hover {
-  background-color: value(B50);
-}
-
+.root:selectionarea(always):hover,
 .root:selectionarea(hover):hover {
   background-color: value(B50);
 }
@@ -201,5 +197,9 @@
 
 /* Hover */
 .root:selection(unchecked):hover .checkbox {
+  background-color: value(B50);
+}
+
+.root:checkboxhover .checkbox {
   background-color: value(B50);
 }

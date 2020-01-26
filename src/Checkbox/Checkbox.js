@@ -32,6 +32,16 @@ class Checkbox extends React.PureComponent {
     };
   };
 
+  focusableOnFocus = () => {
+    this.setState({ isFocused: true });
+    this.props.focusableOnFocus && this.props.focusableOnFocus();
+  };
+
+  focusableOnBlur = () => {
+    this.setState({ isFocused: false });
+    this.props.focusableOnBlur && this.props.focusableOnBlur();
+  };
+
   render() {
     const {
       id = this._id,
@@ -65,12 +75,13 @@ class Checkbox extends React.PureComponent {
               ? 'checked'
               : 'unchecked',
             indeterminate,
-            xhover: hover,
+            checkboxHover: hover,
           },
           this.props,
         )}
-        onFocus={this.props.focusableOnFocus}
-        onBlur={this.props.focusableOnBlur}
+        data-focus={this.state.isFocused || null}
+        onFocus={this.focusableOnFocus}
+        onBlur={this.focusableOnBlur}
         tabIndex={disabled ? null : 0}
         {...this._getDataAttributes()}
       >
@@ -92,7 +103,7 @@ class Checkbox extends React.PureComponent {
         >
           <Tooltip
             upgrade
-            dataHook={dataHooks.box}
+            dataHook={dataHooks.boxTooltip}
             disabled={disabled || !hasError || !errorMessage}
             placement="top"
             textAlign="center"
@@ -102,7 +113,7 @@ class Checkbox extends React.PureComponent {
             zIndex={10000}
           >
             <div className={styles.outer}>
-              <div className={styles.checkbox}>
+              <div data-hook={dataHooks.box} className={styles.checkbox}>
                 <div
                   className={styles.inner}
                   onClick={e => e.stopPropagation()}

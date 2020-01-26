@@ -1,4 +1,3 @@
-import { isClassExists } from '../../test/utils';
 import { labelDriverFactory } from 'wix-ui-backoffice/dist/src/components/Label/Label.driver';
 import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 //TODO - add tooltip classic driver in the correct place
@@ -19,7 +18,7 @@ const checkboxDriverFactory = ({ element, eventTrigger }) => {
 
   const getErrorMessage = async () => {
     const tooltipTestkit = tooltipDriverFactory({
-      element: byHook(dataHooks.box),
+      element: byHook(dataHooks.boxTooltip),
       eventTrigger,
     });
 
