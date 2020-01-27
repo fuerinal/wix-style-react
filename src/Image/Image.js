@@ -41,7 +41,7 @@ Image.propTypes = {
   /** Hook for testing purposes. */
   dataHook: PropTypes.string,
 
-  /** Image source. A default placeholder image is displayed when source is not provided. */
+  /** Image asset source. A default placeholder image is displayed when source is not provided. */
   source: PropTypes.string,
 
   /** Width of the image element box. */
