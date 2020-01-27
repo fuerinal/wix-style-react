@@ -1,62 +1,59 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import Text from '../Text';
-import Button from '../Button';
+import PropTypes, { node } from 'prop-types';
 import styles from './SidePanel.st.css';
-import { dataHooks } from './constants';
+import classNames from 'classnames';
+import Content from './Content';
+import Header from './Header';
 
-/** SidePanel */
 class SidePanel extends React.PureComponent {
   static displayName = 'SidePanel';
 
   static propTypes = {
+    className: PropTypes.string,
     dataHook: PropTypes.string,
-
-    /** Text for the button */
-    buttonText: PropTypes.string,
+    onClose: PropTypes.func,
+    children: node,
   };
 
   static defaultProps = {
-    buttonText: 'Click me!',
+    onClose: () => null,
   };
 
-  state = {
-    count: 0,
-  };
+  passPropsToChildren() {
+    const { children, onClose } = this.props;
 
-  _handleClick = () => {
-    this.setState(({ count }) => ({
-      count: count + 1,
-    }));
-  };
+    return React.Children.map(children, child => {
+      let props = {};
+      switch (child.type.displayName) {
+        case Header.displayName: {
+          props = {
+            onClose,
+          };
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+
+      return React.cloneElement(child, props);
+    });
+  }
 
   render() {
-    const { count } = this.state;
-    const { dataHook, buttonText } = this.props;
-    const isEven = count % 2 === 0;
+    const { dataHook, className } = this.props;
+    const rootClassNames = classNames(styles.root, className);
+    const childrenWithProps = this.passPropsToChildren();
 
     return (
-      <div
-        {...styles('root', { even: isEven, odd: !isEven }, this.props)}
-        data-hook={dataHook}
-      >
-        <Text dataHook={dataHooks.sidePanelCount}>
-          You clicked this button {isEven ? 'even' : 'odd'} number (
-          <span className={styles.number}>{count}</span>) of times
-        </Text>
-
-        <div className={styles.button}>
-          <Button
-            onClick={this._handleClick}
-            dataHook={dataHooks.sidePanelButton}
-          >
-            {buttonText}
-          </Button>
-        </div>
+      <div className={rootClassNames} data-hook={dataHook}>
+        {childrenWithProps}
       </div>
     );
   }
 }
+
+SidePanel.Content = Content;
+SidePanel.Header = Header;
 
 export default SidePanel;

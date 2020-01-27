@@ -67,6 +67,45 @@ export default {
           columns([
             description({
               title: 'Simple Usage',
+              text: 'empty',
+            }),
+
+            code({
+              compact: true,
+              source: `
+<SidePanel onClose={() => alert('click!')}>
+<SidePanel.Header title="Title" infoTooltipContent="Tooltip" ></SidePanel.Header>
+      <SidePanel.Content>
+        <Box height="160px" >BOX 1</Box>
+      </SidePanel.Content>
+</SidePanel>`,
+            }),
+          ]),
+
+          columns([
+            description({
+              title: 'Custom Title',
+              text: 'empty',
+            }),
+
+            code({
+              compact: true,
+              source: `
+<SidePanel >
+<SidePanel.Header title="Title" showDivider={false}></SidePanel.Header>
+      <SidePanel.Content>
+        <Box height="160px" >BOX 1</Box>
+      </SidePanel.Content>
+
+
+
+</SidePanel>`,
+            }),
+          ]),
+
+          columns([
+            description({
+              title: 'Simple Usage',
               text: 'A simple example with compact preview',
             }),
 
