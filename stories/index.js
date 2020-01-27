@@ -185,3 +185,6 @@ require('./ModalMobileLayout/index.story'); // 9.5 Mobile Modal
 require('./FieldWithSelectionComposite');
 require('../src/Deprecated/SideMenu/docs');
 require('../src/Deprecated/SideMenu/docs/SideMenu');
+
+// TODO: move to correct position
+require('../src/SidePanel/docs/index.story');
