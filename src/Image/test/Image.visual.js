@@ -24,6 +24,12 @@ const tests = [
           source: undefined,
         },
       },
+      {
+        it: 'broken',
+        props: {
+          source: 'doesnotexist',
+        },
+      },
     ],
   },
   {
