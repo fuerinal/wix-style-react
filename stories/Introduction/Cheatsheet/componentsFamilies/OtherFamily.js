@@ -23,6 +23,7 @@ import Tag from 'wix-style-react/Tag';
 import Loader from 'wix-style-react/Loader';
 import LinearProgressBar from 'wix-style-react/LinearProgressBar';
 import CircularProgressBar from 'wix-style-react/CircularProgressBar';
+import Image from 'wix-style-react/Image';
 
 //Assets
 import { Layout, Cell } from 'wix-style-react/Layout';
@@ -374,6 +375,26 @@ const CircularProgressBarExample = () => {
   );
 };
 
+const ImageExample = () => {
+  const symbol = otherSymbols.image;
+  const components = otherSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+    size: singleComponentSizes.compact,
+  };
+
+  return (
+    <SingleComponentSideBySide {...singleComponentProps}>
+      <Image
+        width="150"
+        source="https://static.wixstatic.com/media/89ea07a19c3d415e99a8a8a3c0ab1de8.jpg/v1/fill/w_343,h_343,al_c,q_80,usm_0.66_1.00_0.01/89ea07a19c3d415e99a8a8a3c0ab1de8.jpg"
+      />
+    </SingleComponentSideBySide>
+  );
+};
+
 const OtherFamily = () => (
   <FamilyStructure title={groupSymbol} showPreview>
     <AvatarExample />
@@ -384,6 +405,7 @@ const OtherFamily = () => (
     <LoaderExample />
     <LinearProgressBarExample />
     <CircularProgressBarExample />
+    <ImageExample />
   </FamilyStructure>
 );
 
