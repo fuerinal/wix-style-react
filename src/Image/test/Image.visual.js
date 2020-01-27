@@ -41,6 +41,10 @@ const tests = [
           width: undefined,
           height: undefined,
         },
+        wrapperStyle: {
+          width: 100,
+          height: 100,
+        },
       },
       {
         it: 'width defined and height undefined',
@@ -54,6 +58,9 @@ const tests = [
         props: {
           width: undefined,
           height: 150,
+        },
+        wrapperStyle: {
+          width: 150,
         },
       },
       {
@@ -154,9 +161,11 @@ const tests = [
 ];
 
 tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
+  its.forEach(({ it, props, wrapperStyle }) => {
     storiesOf(`Image${describe ? '/' + describe : ''}`, module).add(it, () => (
-      <Image {...commonProps} {...props} />
+      <div style={wrapperStyle}>
+        <Image {...commonProps} {...props} />
+      </div>
     ));
   });
 });

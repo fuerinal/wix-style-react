@@ -68,6 +68,7 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
+  width: '100%',
   fit: 'cover',
   position: 'center',
   lazy: false,
