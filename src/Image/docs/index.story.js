@@ -17,6 +17,11 @@ import {
 import Box from '../../Box';
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
+import sourceExample from '!raw-loader!./examples/source';
+import sizeExample from '!raw-loader!./examples/size';
+import fitExample from '!raw-loader!./examples/fit';
+import positionExample from '!raw-loader!./examples/position';
+import lazyExample from '!raw-loader!./examples/lazy';
 
 import Image from '..';
 
@@ -78,14 +83,66 @@ export default {
 
           columns([
             description({
-              title: 'Simple Usage',
-              text: 'A simple example with compact preview',
+              title: 'Source',
+              text:
+                'Use `source` prop to display an image asset. If source is not provided - a default placeholder image asset is displayed.',
             }),
 
             code({
               compact: true,
-              source:
-                '<Image lazy width="100%" fit="cover" source="https://interactive-examples.mdn.mozilla.net/media/examples/moon.jpg" />',
+              source: sourceExample,
+            }),
+          ]),
+
+          columns([
+            description({
+              title: 'Size',
+              text:
+                'An image will stretch to parent width by default and will maintain aspect ratio if there is enough space provided by parent container. Custom size of an image can be specified using `width` and `height` props.',
+            }),
+
+            code({
+              compact: true,
+              source: sizeExample,
+            }),
+          ]),
+
+          columns([
+            description({
+              title: 'Fit Mode',
+              text:
+                'A `fit` prop can be used to customize how the image is displayed when the image asset size does not match custom size.',
+            }),
+
+            code({
+              compact: true,
+              source: fitExample,
+            }),
+          ]),
+
+          columns([
+            description({
+              title: 'Position',
+              text:
+                'A `position` prop can be used to adjust the placement of an image affected by one of the `fit` prop modes. Any valid [CSS position](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value) value can be used.',
+            }),
+
+            code({
+              compact: true,
+              source: positionExample,
+            }),
+          ]),
+
+          columns([
+            description({
+              title: 'Lazy Loading',
+              text:
+                'An image marked with `lazy` prop will only load source asset when it reaches a calculated distance from the viewport.',
+            }),
+
+            code({
+              compact: true,
+              source: lazyExample,
             }),
           ]),
         ],
