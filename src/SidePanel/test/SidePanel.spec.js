@@ -128,17 +128,17 @@ fdescribe('SidePanel', () => {
       expect(await driver.headerDriver.isCloseButtonExists()).toBe(true);
     });
 
-    it('should call onClose when close button clicked', async () => {
-      const onClose = jest.fn();
+    it('should call onCloseButtonClick when close button clicked', async () => {
+      const onCloseButtonClick = jest.fn();
       const { driver } = render(
-        <SidePanel onClose={onClose}>
+        <SidePanel onCloseButtonClick={onCloseButtonClick}>
           <SidePanel.Header />
         </SidePanel>,
       );
 
       await driver.clickClose();
 
-      expect(onClose).toHaveBeenCalled();
+      expect(onCloseButtonClick).toHaveBeenCalled();
     });
 
     it('should have children', async () => {

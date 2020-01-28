@@ -73,7 +73,7 @@ export default {
             code({
               compact: true,
               source: `
-<SidePanel onClose={() => alert('click!')}>
+<SidePanel onCloseButtonClick={() => alert('click!')}>
 <SidePanel.Header title="Title" infoTooltipContent="Tooltip" ></SidePanel.Header>
       <SidePanel.Content>
         <Box height="160px" >BOX 1</Box>

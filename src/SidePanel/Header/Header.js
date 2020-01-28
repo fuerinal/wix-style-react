@@ -20,13 +20,13 @@ class Header extends React.PureComponent {
     showDivider: PropTypes.bool,
     sticky: PropTypes.bool,
     children: PropTypes.node,
-    onClose: PropTypes.func,
+    onCloseButtonClick: PropTypes.func,
   };
 
   static defaultProps = {
     sticky: true,
     showDivider: true,
-    onClose: () => null,
+    onCloseButtonClick: () => null,
   };
 
   renderStringTitle() {
@@ -42,7 +42,7 @@ class Header extends React.PureComponent {
   }
 
   renderTitle() {
-    const { title, onClose } = this.props;
+    const { title, onCloseButtonClick } = this.props;
     const isStringTitle = typeof title === 'string';
     return (
       <div className={styles.titleContainer}>
@@ -50,7 +50,7 @@ class Header extends React.PureComponent {
         <CloseButton
           dataHook={dataHooks.sidePanelHeaderCloseButton}
           size="medium"
-          onClick={onClose}
+          onClick={onCloseButtonClick}
         />
       </div>
     );

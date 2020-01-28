@@ -12,23 +12,23 @@ class SidePanel extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     dataHook: PropTypes.string,
-    onClose: PropTypes.func,
+    onCloseButtonClick: PropTypes.func,
     children: node,
   };
 
   static defaultProps = {
-    onClose: () => null,
+    onCloseButtonClick: () => null,
   };
 
   passPropsToChildren() {
-    const { children, onClose } = this.props;
+    const { children, onCloseButtonClick } = this.props;
 
     return React.Children.map(children, child => {
       let props = {};
       switch (child.type.displayName) {
         case Header.displayName: {
           props = {
-            onClose,
+            onCloseButtonClick,
           };
           break;
         }
