@@ -46,7 +46,7 @@ class Header extends React.PureComponent {
     const isStringTitle = typeof title === 'string';
     return (
       <div className={styles.titleContainer}>
-        {isStringTitle && this.renderStringTitle()}
+        {isStringTitle ? this.renderStringTitle() :  title}
         <CloseButton
           dataHook={dataHooks.sidePanelHeaderCloseButton}
           size="medium"

@@ -92,13 +92,42 @@ export default {
               compact: true,
               source: `
 <SidePanel >
-<SidePanel.Header title="Title" showDivider={false}></SidePanel.Header>
+    <SidePanel.Header title={<Input/>} showDivider={false}></SidePanel.Header>
+    <SidePanel.Content>
+      <Box height="160px" >BOX 1</Box>
+    </SidePanel.Content>
+</SidePanel>`,
+            }),
+          ]),
+
+          columns([
+            description({
+              title: 'Custom Header Node',
+              text: 'empty',
+            }),
+
+            code({
+              compact: true,
+              source: `
+<SidePanel >
+<SidePanel.Header title={<Input/>} showDivider={false}>
+
+<Tabs
+    items={[
+      { id: 1, title: 'item 1' },
+      { id: 2, title: 'item 2' },
+      { id: 3, title: 'item 3' },
+      { id: 4, title: 'item 4' },
+      { id: 5, title: 'item 5' },
+    ]}
+    activeId={1}
+
+  />
+
+</SidePanel.Header>
       <SidePanel.Content>
         <Box height="160px" >BOX 1</Box>
       </SidePanel.Content>
-
-
-
 </SidePanel>`,
             }),
           ]),

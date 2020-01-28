@@ -12,6 +12,8 @@ export const sidePanelPrivateDriverFactory = base => {
     header: {
       exists: async () =>
         base.$(`[data-hook="${dataHooks.sidePanelHeader}"]`).exists(),
+      getCustomNodeText: async () =>
+        base.$(`[data-hook="custom-node"]`).text(),
     },
   };
 };

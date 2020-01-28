@@ -1,9 +1,10 @@
+//file.only
 import React from 'react';
 import { createRendererWithUniDriver, cleanup } from '../../../test/utils/unit';
 import SidePanel from '../SidePanel';
 import { sidePanelPrivateDriverFactory } from './SidePanel.private.uni.driver';
 
-describe('SidePanel', () => {
+fdescribe('SidePanel', () => {
   const render = createRendererWithUniDriver(sidePanelPrivateDriverFactory);
 
   afterEach(() => {
@@ -71,6 +72,17 @@ describe('SidePanel', () => {
       );
     });
 
+    it('should have custom node title', async () => {
+      const title = 'some text';
+      const { driver } = render(
+        <SidePanel>
+          <SidePanel.Header title={<div data-hook={'custom-node'}>{title}</div>} />
+        </SidePanel>,
+      );
+
+      expect(await driver.header.getCustomNodeText()).toBe(title);
+    });
+
     it('should show divider', async () => {
       const title = 'some text';
       const { driver } = render(
@@ -115,5 +127,18 @@ describe('SidePanel', () => {
 
       expect(onClose).toHaveBeenCalled();
     });
+
+    it('should have children', async () => {
+      const title = 'some text';
+      const { driver } = render(
+        <SidePanel>
+          <SidePanel.Header >
+            <div data-hook={'custom-node'}>{title}</div>
+          </SidePanel.Header>
+        </SidePanel>,
+      );
+
+      expect(await driver.header.getCustomNodeText()).toBe(title);
+    })
   });
 });

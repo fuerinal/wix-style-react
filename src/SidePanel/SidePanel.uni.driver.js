@@ -5,7 +5,7 @@ import { dividerDriverFactory } from '../Divider/Divider.uni.driver';
 import { closeButtonDriverFactory } from '../CloseButton/CloseButton.uni.driver';
 
 export const sidePanelDriverFactory = (base, body) => {
-  const headerFormFieldDriver = formFieldUniDriverFactory(base, body, {
+  const titleFormFieldDriver = formFieldUniDriverFactory(base, body, {
     dataHook: dataHooks.sidePanelHeaderFormField,
   });
 
@@ -36,8 +36,8 @@ export const sidePanelDriverFactory = (base, body) => {
 
     headerDriver: {
       getTitleText: async () =>
-        (await headerFormFieldDriver.getLabel()).textContent,
-      getTooltipContent: async () => headerFormFieldDriver.getInfoContent(), //TODO:zeev: not working...
+        (await titleFormFieldDriver.getLabel()).textContent,
+      getTooltipContent: async () => titleFormFieldDriver.getInfoContent(), //TODO:zeev: not working...
       isDividerExists: async () => dividerDriver.exists(),
       isCloseButtonExists: async () => closeButtonDriver.exists(),
     },
