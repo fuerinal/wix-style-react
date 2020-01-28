@@ -35,11 +35,10 @@ export default {
   componentPath: '..',
 
   componentProps: {
-    source:
+    src:
       'https://static.wixstatic.com/media/89ea07a19c3d415e99a8a8a3c0ab1de8.jpg/v1/fill/w_343,h_343,al_c,q_80,usm_0.66_1.00_0.01/89ea07a19c3d415e99a8a8a3c0ab1de8.jpg',
     fit: 'cover',
     position: 'center',
-    lazy: false,
   },
 
   exampleProps: {
@@ -84,7 +83,7 @@ export default {
             description({
               title: 'Source',
               text:
-                'Use `source` prop to display an image asset. If source is not provided - a default placeholder image asset is displayed.',
+                'Use `src` prop to display an image asset. If source is not provided - a default placeholder image asset is displayed.',
             }),
 
             code({
@@ -136,7 +135,7 @@ export default {
             description({
               title: 'Lazy Loading',
               text:
-                'An image marked with `lazy` prop will only load source asset when it reaches a calculated distance from the viewport.',
+                'An image marked with `loading="lazy"` prop will only load source asset when it reaches a calculated distance from the viewport.',
             }),
 
             code({

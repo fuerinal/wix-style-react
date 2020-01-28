@@ -32,13 +32,12 @@ function ImageWithMandatoryProps() {
 function ImageWithAllProps() {
   return (
     <Image
-      source="source"
+      src="source"
       width="100"
       height={100}
       dataHook="hook"
       fit="contain"
       position="center"
-      lazy
     />
   );
 }
