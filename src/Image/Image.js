@@ -11,7 +11,7 @@ const Image = ({ dataHook, src, fit, position, style, ...otherProps }) => {
   const imgStyle = isTiled
     ? {
         backgroundPosition: position,
-        backgroundImage: src ? `url("${source}")` : undefined,
+        backgroundImage: source ? `url("${source}")` : undefined,
       }
     : {
         objectFit: fit,
@@ -42,7 +42,12 @@ Image.propTypes = {
   /** Height of the image element box. */
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
-  /** Image source content fit mode inside a box. */
+  /**
+   * Image source content fit mode inside a box. The special `tile` value is used to
+   * enable tiled fit mode. Other values directly map to
+   * [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
+   * CSS property values.
+   */
   fit: PropTypes.oneOf(['contain', 'cover', 'tile', 'none']),
 
   /**
