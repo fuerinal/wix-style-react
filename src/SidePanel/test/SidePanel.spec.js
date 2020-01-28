@@ -76,18 +76,31 @@ fdescribe('SidePanel', () => {
       const title = 'some text';
       const { driver } = render(
         <SidePanel>
-          <SidePanel.Header title={<div data-hook={'custom-node'}>{title}</div>} />
+          <SidePanel.Header
+            title={<div data-hook={'custom-node'}>{title}</div>}
+          />
         </SidePanel>,
       );
 
       expect(await driver.header.getCustomNodeText()).toBe(title);
     });
 
+    it('should show divider by default', async () => {
+      const title = 'some text';
+      const { driver } = render(
+        <SidePanel>
+          <SidePanel.Header title={title} />
+        </SidePanel>,
+      );
+
+      expect(await driver.headerDriver.isDividerExists()).toBe(true);
+    });
+
     it('should show divider', async () => {
       const title = 'some text';
       const { driver } = render(
         <SidePanel>
-          <SidePanel.Header title={title} showDivider />
+          <SidePanel.Header title={title} showDivider={true} />
         </SidePanel>,
       );
 
@@ -132,13 +145,56 @@ fdescribe('SidePanel', () => {
       const title = 'some text';
       const { driver } = render(
         <SidePanel>
-          <SidePanel.Header >
+          <SidePanel.Header>
             <div data-hook={'custom-node'}>{title}</div>
           </SidePanel.Header>
         </SidePanel>,
       );
 
       expect(await driver.header.getCustomNodeText()).toBe(title);
-    })
+    });
+  });
+
+  describe('SidePanel.Footer', () => {
+    it('should have footer', async () => {
+      const content = 'Any Content';
+      const { driver } = render(
+        <SidePanel>
+          <SidePanel.Footer>{content}</SidePanel.Footer>
+        </SidePanel>,
+      );
+
+      expect(await driver.footer.exists()).toBe(true);
+    });
+
+    it('should show divider by default', async () => {
+      const { driver } = render(
+        <SidePanel>
+          <SidePanel.Footer></SidePanel.Footer>
+        </SidePanel>,
+      );
+
+      expect(await driver.footerDriver.isDividerExists()).toBe(true);
+    });
+
+    it('should show divider', async () => {
+      const { driver } = render(
+        <SidePanel>
+          <SidePanel.Footer showDivider={true}></SidePanel.Footer>
+        </SidePanel>,
+      );
+
+      expect(await driver.footerDriver.isDividerExists()).toBe(true);
+    });
+
+    it('should not show divider', async () => {
+      const { driver } = render(
+        <SidePanel>
+          <SidePanel.Footer showDivider={false}></SidePanel.Footer>
+        </SidePanel>,
+      );
+
+      expect(await driver.footerDriver.isDividerExists()).toBe(false);
+    });
   });
 });

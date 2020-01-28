@@ -78,6 +78,9 @@ export default {
       <SidePanel.Content>
         <Box height="160px" >BOX 1</Box>
       </SidePanel.Content>
+      <SidePanel.Footer>
+        <Box height="20px" >Footer</Box>
+      </SidePanel.Footer>
 </SidePanel>`,
             }),
           ]),

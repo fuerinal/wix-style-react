@@ -9,7 +9,11 @@ export const sidePanelDriverFactory = (base, body) => {
     dataHook: dataHooks.sidePanelHeaderFormField,
   });
 
-  const dividerDriver = dividerDriverFactory(
+  const headerDividerDriver = dividerDriverFactory(
+    base.$(`[data-hook="${dataHooks.sidePanelHeaderDivider}"]`),
+  );
+
+  const footerDividerDriver = dividerDriverFactory(
     base.$(`[data-hook="${dataHooks.sidePanelHeaderDivider}"]`),
   );
 
@@ -38,8 +42,11 @@ export const sidePanelDriverFactory = (base, body) => {
       getTitleText: async () =>
         (await titleFormFieldDriver.getLabel()).textContent,
       getTooltipContent: async () => titleFormFieldDriver.getInfoContent(), //TODO:zeev: not working...
-      isDividerExists: async () => dividerDriver.exists(),
+      isDividerExists: async () => headerDividerDriver.exists(),
       isCloseButtonExists: async () => closeButtonDriver.exists(),
+    },
+    footerDriver: {
+      isDividerExists: async () => footerDividerDriver.exists(),
     },
   };
 };

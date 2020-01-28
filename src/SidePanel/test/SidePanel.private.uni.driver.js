@@ -9,6 +9,10 @@ export const sidePanelPrivateDriverFactory = base => {
     hasClass: className => base.hasClass(className),
     contentExists: async () =>
       base.$(`[data-hook="${dataHooks.sidePanelContent}"]`).exists(),
+    footer: {
+      exists: async () =>
+        base.$(`[data-hook="${dataHooks.sidePanelFooter}"]`).exists(),
+    },
     header: {
       exists: async () =>
         base.$(`[data-hook="${dataHooks.sidePanelHeader}"]`).exists(),

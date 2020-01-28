@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes, { node } from 'prop-types';
 import styles from './SidePanel.st.css';
 import classNames from 'classnames';
-import Content from './Content';
 import Header from './Header';
+import Content from './Content';
+import Footer from './Footer';
 
 class SidePanel extends React.PureComponent {
   static displayName = 'SidePanel';
@@ -53,7 +54,8 @@ class SidePanel extends React.PureComponent {
   }
 }
 
-SidePanel.Content = Content;
 SidePanel.Header = Header;
+SidePanel.Content = Content;
+SidePanel.Footer = Footer;
 
 export default SidePanel;
