@@ -21,6 +21,12 @@ const tests = [
       {
         it: 'empty',
         props: {
+          source: '',
+        },
+      },
+      {
+        it: 'not specified',
+        props: {
           source: undefined,
         },
       },
